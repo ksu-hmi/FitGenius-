@@ -4,13 +4,10 @@ In the ever-evolving landscape of health and wellness technology, FitGenius stan
 
 ## Key Features 
 - **Data Visualization:**
-  FitGenius empowers users by transforming data from personalized smart devices, such as fitness watches, into actionable insights. The intuitive dashboard provides real-time visualizations of crucial health metrics, including heart rate, sleep patterns, and physical activity. This visual representation enhances user engagement and simplifies the tracking of personal wellness journeys.
-
-- **Disease Predictions:**
-  At the core of FitGenius is a sophisticated ML algorithm that analyzes historical health data to predict potential diseases. This predictive modeling aims to provide users with early awareness, facilitating proactive health management. The combination of data-driven insights and early predictions positions FitGenius as a valuable tool for preventative healthcare.
+  FitGenius empowers users by transforming data from personalized smart devices, such as fitness watches, into actionable insights. The intuitive dashboard provides real-time visualizations of crucial health metrics. This visual representation enhances user engagement and simplifies the tracking of personal wellness journeys.
 
 - **Fitness Recommendations:**
-  FitGenius goes beyond traditional fitness tracking by delivering personalized fitness recommendations. By considering individual health profiles, fitness goals, and historical data, the platform generates tailored exercise plans and lifestyle suggestions. This feature optimizes fitness routines, making them more efficient and aligned with users' unique needs.
+  FitGenius goes beyond traditional fitness tracking by delivering personalized fitness recommendations. By considering individual health profiles, fitness goals, and historical data, the platform generates tailored lifestyle suggestions. This feature optimizes fitness routines, making them more efficient and aligned with users' unique needs.
 
 ## Required Packages: 
 - Pandas
