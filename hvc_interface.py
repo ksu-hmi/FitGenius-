@@ -174,7 +174,7 @@ def display_gen(df):
 def render():
     # The main render function that is called when the heart interface is choosen.    
     if 'df_hvc' not in st.session_state:
-        df = pd.read_csv('attachments/hcvdat0.csv')  
+        df = pd.read_csv('datasets/hcvdat0.csv')  
         df['count'] = 1
         
         st.session_state['df_hvc'] = df

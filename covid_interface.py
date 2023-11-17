@@ -158,7 +158,7 @@ def display_gen(df):
 def render():
     # the main render function that is called when the heart interface is choosen.
     if 'df_covid' not in st.session_state:
-        df = pd.read_csv('attachments/Cleaned-Data.csv')  
+        df = pd.read_csv('datasets/Cleaned-Data.csv')  
         df['count'] = 1
         df['gender'] = df.apply(lambda row: label_gender(row), axis=1)
         df['age'] = df.apply(lambda row: label_age(row), axis=1)

@@ -136,7 +136,7 @@ def display_gen(df):
 def render():
     # The main render function that is called when the heart interface is choosen.    
     if 'df_heart' not in st.session_state:
-        df = pd.read_csv('attachments/heart.csv')  
+        df = pd.read_csv('datasets/heart.csv')  
         st.session_state['df_heart'] = df
     else:
         df = st.session_state['df_heart']
