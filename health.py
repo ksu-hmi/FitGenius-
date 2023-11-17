@@ -67,10 +67,10 @@ def display_gen(df):
 
     col1, col2, col3, col4 = st.columns(4)
 
-    col1.metric('Amount of Sleep', df['Sleep Duration'].mean())
-    col2.metric('Sleep Quality Sleep', df['Quality of Sleep'].mean())
-    col3.metric('Average Physical Activity Level', df['Physical Activity Level'].mean())
-    col4.metric('Average Stress Level', df['Stress Level'].mean())
+    col1.metric('Amount of Sleep', round(df['Sleep Duration'].mean()))
+    col2.metric('Sleep Quality Sleep', round(df['Quality of Sleep'].mean()))
+    col3.metric('Average Physical Activity Level', round(df['Physical Activity Level'].mean()))
+    col4.metric('Average Stress Level', round(df['Stress Level'].mean()))
 
 
     st.markdown("<h2 style='text-align: center;'>Distributions</h2>", unsafe_allow_html=True)
@@ -110,7 +110,7 @@ def ml_interface(df):
     target_variable = 'BMI Category'
     
     # Features and target variable
-    features = ['Stress Level', 'Age', 'Sleep Duration', 'Gender', 'Heart Rate, Physical Activity Level']
+    features = ['Stress Level', 'Age', 'Sleep Duration', 'Gender', 'Heart Rate' , 'Physical Activity Level']
     X = df[features]
     y = df[target_variable]
 

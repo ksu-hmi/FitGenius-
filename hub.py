@@ -32,6 +32,10 @@ with open("config.json", "r") as config_file:
 
     #### View selectors
     dic = {name: import_module(mod).render for mod, name in VIEWS.items()}
+    
+# Adding Additonal Interface 
+dic["Health"] = import_module("health").render
+
 
 # Run app
 
