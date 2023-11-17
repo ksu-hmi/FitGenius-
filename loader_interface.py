@@ -9,6 +9,36 @@ from sklearn import linear_model
 
 import matplotlib.pyplot as plt
 
+def health_and_fitness_ml(df):
+    X = df[['Exercise Hours Per Week', 'Alcohol Consumption', 'Heart Rate', 'Sex', 'Blood Pressure', 'Family History', 'Diet', 'Sleep Hours Per Day']]
+    y_health = df['Heart Attack Risk']
+
+    # Assuming you want to predict binary health status (e.g., 'Good' or 'Poor')
+    # You may need to preprocess your target variable accordingly
+    y_health_binary = np.where(y_health == 'Good', 1, 0)
+
+    # Split the data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(X, y_health_binary, test_size=0.2, random_state=42)
+
+    # Train a RandomForestClassifier (you can replace this with the model of your choice)
+    health_model = RandomForestClassifier()
+    health_model.fit(X_train, y_train)
+
+    # Make predictions on the test set
+    y_pred = health_model.predict(X_test)
+
+    # Display evaluation metrics or any other relevant information
+    st.write("Health Model Evaluation:")
+    st.write(f"Accuracy: {accuracy_score(y_test, y_pred)}")
+    st.write(f"Confusion Matrix:\n{confusion_matrix(y_test, y_pred)}")
+
+    # You can further customize the display based on your needs
+    # ...
+
+    # You might also want to return the trained model for later use
+    return health_model
+
+
 def regression(df,col1,col2):
     """"
     A function that takes a dataframe and the name of two columns 
@@ -101,7 +131,7 @@ def render():
     # the main render function that is called when the heart interface is choosen
 
     uploaded_file = st.sidebar.file_uploader("Choose a file")
-    options = st.sidebar.selectbox('Mode',("Display","Kmeans","Regression"))
+    options = st.sidebar.selectbox('Mode',("Display","Kmeans","Regression","Health and Fitness"))
     df = None
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
@@ -133,3 +163,5 @@ def render():
             btn_load = col3.button("Load")
             if btn_load and is_numeric_dtype(df[x_axis_select]) and is_numeric_dtype(df[y_axis_select]):           
                 regression(df,x_axis_select,y_axis_select)
+        elif options == "Health and Fitness": 
+             health_and_fitness_ml(df)

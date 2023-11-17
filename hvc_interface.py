@@ -182,7 +182,7 @@ def render():
         df = st.session_state['df_hvc']
 
 
-    options = st.sidebar.selectbox('Mode',("Display","Kmeans","Regression"))
+    options = st.sidebar.selectbox('Mode',("Display","Kmeans","Regression","Health and Fitness"))
     
 
     if options == 'Display':    
