@@ -22,7 +22,7 @@ In the ever-evolving landscape of health and wellness technology, FitGenius stan
 
 ## Contibuters: 
 This project's contributors are graduate students from Kennesaw State University's Healthcare Management and Informatics program:
-- Andre Derilus
+- André Derilus
 - Kameron Jackson
 - Mariah Hubbard
 - Nathaniel Blackmon
