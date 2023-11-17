@@ -9,10 +9,13 @@ from sklearn import linear_model
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, accuracy_score
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import export_text
 
 import matplotlib.pyplot as plt
 from pandas.api.types import is_string_dtype
 from pandas.api.types import is_numeric_dtype
+
 
 def regression(df, col1, col2):
     """
@@ -104,37 +107,41 @@ def display_gen(df):
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.warning('A non-numeric column, cannot compute the average')
-def ml_interface(df):
-    st.markdown("<h2 style='text-align: center;'>Machine Learning Interface</h2>", unsafe_allow_html=True)
+import streamlit as st
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import export_text
 
-    target_variable = 'BMI Category'
-    
-    # Features and target variable
-    features = ['Stress Level', 'Age', 'Sleep Duration', 'Gender', 'Heart Rate' , 'Physical Activity Level']
+# Function to create and train the decision tree model
+def train_decision_tree(df):
+    # Choose features and target variable
+    features = ['Sleep Duration', 'Heart Rate', 'Stress Level']  # Adjust based on your feature names
     X = df[features]
-    y = df[target_variable]
+    y = df['BMI Category']
 
-    # Split the data into training and testing sets
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    # Create and train the Decision Tree model
+    dt_clf = DecisionTreeClassifier()
+    dt_clf.fit(X, y)
 
-    # Machine Learning model (Random Forest Classifier)
-    clf = RandomForestClassifier()
-    clf.fit(X_train, y_train)
+    return dt_clf
 
-    # Predictions on the test set
-    y_pred = clf.predict(X_test)
+# Function to make predictions and display recommendations
+def display_recommendations(dt_model, input_data):
+    input_data = df.iloc[0][['Sleep Duration', 'Heart Rate', 'Stress Level']]
+    # Make predictions based on the input data
+    prediction = dt_model.predict(sample_data)[0]
 
-    # Display evaluation metrics
-    st.subheader('Classification Report:')
-    st.text(classification_report(y_test, y_pred))
+    # Display recommendations based on the predicted class
+    if prediction == 'class1':
+        st.write("Recommendation 1: ...")
+        st.write("Recommendation 2: ...")
+    elif prediction == 'class2':
+        st.write("Recommendation 3: ...")
+        st.write("Recommendation 4: ...")
+    else:
+        st.write("Default Recommendation: ...")
 
-    st.subheader('Accuracy Score:')
-    st.text(accuracy_score(y_test, y_pred))
 
-    # Feature Importances
-    st.subheader('Feature Importances:')
-    feature_importance = pd.DataFrame(clf.feature_importances_, index=features, columns=['Importance'])
-    st.bar_chart(feature_importance)
 
 # Main render function
 def render():
@@ -145,7 +152,7 @@ def render():
     else:
         df = st.session_state['df_health']
 
-    options = st.sidebar.selectbox('Mode', ("Display", "Kmeans", "Regression", "Health and Fitness", "Machine Learning"))
+    options = st.sidebar.selectbox('Mode', ("Display", "Kmeans", "Regression", "Health and Fitness", "Recommendations"))
 
     if options == 'Display':    
         display_gen(df)
@@ -208,12 +215,9 @@ def render():
         if btn_load:
             regression(df, x_axis_select, y_axis_select)
 
-    elif options == "Health and Fitness":
-        # Add your health and fitness logic here
-        st.write("Health and Fitness Mode")
-
-    elif options == "Machine Learning":
-        ml_interface(df)
+    elif options == "Recommendations":
+        sample_data = df.iloc[0][['Sleep Duration', 'Heart Rate', 'Stress Level']]
+        display_recommendations(sample_data, dt_model=)
 
 # Call the render function
 render()

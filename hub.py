@@ -32,9 +32,6 @@ with open("config.json", "r") as config_file:
 
     #### View selectors
     dic = {name: import_module(mod).render for mod, name in VIEWS.items()}
-    
-# Adding Additonal Interface 
-dic["Health"] = import_module("health").render
 
 
 # Run app
@@ -43,3 +40,4 @@ st.sidebar.title("Data Science Hub")
 view_list_ordered = list(dic.keys())
 app_view = st.sidebar.selectbox("Select App", view_list_ordered)
 dic[app_view]()
+
