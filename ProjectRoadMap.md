@@ -15,6 +15,7 @@
 - [x] Begin reviewing code for errors and commit changes
 - [x] Have orignal code run properly
 - [x] Import personal smartwatch data into platform
+- [x] Change heading and titles
 - [ ] Analyze watch data
 - [ ] Create visualizations of data
 - [x] Start working towards a decision tree for fitness and health recommendations
