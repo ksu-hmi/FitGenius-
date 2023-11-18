@@ -70,21 +70,20 @@ def display_gen(df):
 
     col1, col2, col3, col4 = st.columns(4)
 
-    col1.metric('Amount of Sleep', round(df['Sleep Duration'].mean()))
-    col2.metric('Sleep Quality Sleep', round(df['Quality of Sleep'].mean()))
-    col3.metric('Average Physical Activity Level', round(df['Physical Activity Level'].mean()))
-    col4.metric('Average Stress Level', round(df['Stress Level'].mean()))
+    col1.metric('Average Step Count', round(df['Actual Steps'].mean()))
+    col2.metric('Average Calories Burned', round(df['Total Calories'].mean()))
+    col3.metric('Average Stress Level', round(df['Stress'].mean()))
 
 
     st.markdown("<h2 style='text-align: center;'>Distributions</h2>", unsafe_allow_html=True)
 
-    fig = px.histogram(df, x="BMI Category", color="Age", marginal="violin", hover_data=df.columns)
+    fig = px.histogram(df, x="Stress", color="Actual Steps", marginal="violin", hover_data=df.columns)
 
     col1, col2 = st.columns([1, 1])
     col1.plotly_chart(fig, use_container_width=True)
 
-    df_agg = df.groupby(['BMI Category'], as_index=False)['Age'].mean()
-    col2.write("BMI Category")
+    df_agg = df.groupby(['Date'], as_index=False)['Actual Steps'].mean()
+    col2.write("Steps")
     col2.table(df_agg)
 
     st.markdown("<h2 style='text-align: center;'>Aggregation by column</h2>", unsafe_allow_html=True)
@@ -147,12 +146,12 @@ def display_recommendations(dt_model, input_data):
 def render():
     if 'df_health' not in st.session_state:
         # Load your health dataset (replace 'your_dataset.csv' with the actual file name)
-        df = pd.read_csv('lifestyle.csv')  
+        df = pd.read_csv('WatchData.csv')  
         st.session_state['df_health'] = df
     else:
         df = st.session_state['df_health']
 
-    options = st.sidebar.selectbox('Mode', ("Display", "Kmeans", "Regression", "Health and Fitness", "Recommendations"))
+    options = st.sidebar.selectbox('Mode', ("Display", "Kmeans", "Regression", "Recommendations"))
 
     if options == 'Display':    
         display_gen(df)
@@ -160,7 +159,7 @@ def render():
         possible_rows = df.columns
 
         fig = px.scatter_matrix(df,
-            dimensions=['Age', 'Alcohol Consumption', 'Heart Rate', 'Physical Activity Days Per Week'],
+            dimensions=['Stress', 'Total Calories', 'Actual Steps'],
             color="Heart Attack Risk", symbol="Heart Attack Risk",
             title="Scatter matrix",
             labels={col: col.replace('_', ' ') for col in df.columns})  # remove underscore
@@ -191,8 +190,8 @@ def render():
         possible_rows = df.columns
 
         fig = px.scatter_matrix(df,
-            dimensions=['Stress Level', 'Age', 'Sleep Duration', 'Gender', 'Heart Rate, Physical Activity Level'],
-            color="Stress Level", symbol="Stress Level",
+            dimensions=['Stress', 'Total Calories', 'Actual Steps'],
+            color="Stress", symbol="Stress",
             title="Scatter matrix",
             labels={col: col.replace('_', ' ') for col in df.columns})  # remove underscore
         config = {
@@ -216,8 +215,8 @@ def render():
             regression(df, x_axis_select, y_axis_select)
 
     elif options == "Recommendations":
-        sample_data = df.iloc[0][['Sleep Duration', 'Heart Rate', 'Stress Level']]
-        display_recommendations(sample_data, dt_model=)
+        sample_data = df.iloc[0]['Stress', 'Total Calories', 'Actual Steps']
+        display_recommendations(sample_data,dt_model)
 
 # Call the render function
 render()
