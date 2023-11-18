@@ -35,8 +35,8 @@ with open("config.json", "r") as config_file:
 
 
 # Run app
-
-st.sidebar.title("FitGenius Hub")
+st.title("Health and Fitness Data Analytics")
+st.sidebar.header("Option")
 view_list_ordered = list(dic.keys())
 app_view = st.sidebar.selectbox("Select App", view_list_ordered)
 dic[app_view]()
