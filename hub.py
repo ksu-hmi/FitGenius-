@@ -38,6 +38,6 @@ with open("config.json", "r") as config_file:
 st.title("Health and Fitness Data Analytics")
 st.sidebar.header("Option")
 view_list_ordered = list(dic.keys())
-app_view = st.sidebar.selectbox("Select App", view_list_ordered)
+app_view = st.sidebar.selectbox("Select Data Type", view_list_ordered)
 dic[app_view]()
 
