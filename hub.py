@@ -42,6 +42,4 @@ app_view = st.sidebar.selectbox("Select Data Type", view_list_ordered)
 dic[app_view]()
 
 options = st.sidebar.multiselect("Chart Type", ["Chart 1", " Chart 2", "Chart 3"])
-
-# Use the selected options in your app
 st.write(f"You selected: {options}")
