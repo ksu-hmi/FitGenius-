@@ -219,7 +219,8 @@ def render():
         # added brackets to column selection above to correct syntax error
         dt_model = train_decision_tree(df)
         # added above line to train model before predictions
-        display_recommendations(sample_data,dt_model)
+        display_recommendations(dt_model, sample_data)
+        # switched order of variables to line above to match function
 
 # Call the render function
 render()
