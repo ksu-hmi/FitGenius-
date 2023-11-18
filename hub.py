@@ -12,7 +12,7 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG)
 
-st.set_page_config(page_title="Data Hub", page_icon=None, layout='wide', initial_sidebar_state='auto')
+st.set_page_config(page_title="FitGenius", page_icon=None, layout='wide', initial_sidebar_state='auto')
 
 
 ##
