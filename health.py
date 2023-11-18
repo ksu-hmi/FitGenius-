@@ -217,6 +217,8 @@ def render():
     elif options == "Recommendations":
         sample_data = df.iloc[0][['Stress', 'Total Calories', 'Actual Steps']]
         # added brackets to column selection above to correct syntax error
+        dt_model = train_decision_tree(df)
+        # added above line to train model before predictions
         display_recommendations(sample_data,dt_model)
 
 # Call the render function
