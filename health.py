@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, accuracy_score
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.tree import export_text
+# from sklearn.tree import export_text: line removed as it is not used in code
 
 import matplotlib.pyplot as plt
 from pandas.api.types import is_string_dtype
@@ -109,7 +109,7 @@ def display_gen(df):
 import streamlit as st
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.tree import export_text
+# from sklearn.tree import export_text: line removed as it it not called in code
 
 # Function to create and train the decision tree model
 def train_decision_tree(df):
