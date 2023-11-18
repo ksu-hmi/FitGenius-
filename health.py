@@ -215,7 +215,8 @@ def render():
             regression(df, x_axis_select, y_axis_select)
 
     elif options == "Recommendations":
-        sample_data = df.iloc[0]['Stress', 'Total Calories', 'Actual Steps']
+        sample_data = df.iloc[0][['Stress', 'Total Calories', 'Actual Steps']]
+        # added brackets to column selection above to correct syntax error
         display_recommendations(sample_data,dt_model)
 
 # Call the render function
