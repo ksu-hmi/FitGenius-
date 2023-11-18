@@ -16,12 +16,12 @@
 - [x] Have orignal code run properly
 - [x] Import personal smartwatch data into platform
 - [x] Change heading and titles
-- [ ] Analyze watch data
-- [ ] Create visualizations of data
+- [x] Analyze watch data
+- [x] Create visualizations of data
 - [x] Start working towards a decision tree for fitness and health recommendations
-- [ ] Commit at least 6 significant updates, each (All)
+- [x] Commit at least 6 significant updates, each (All)
 - [x] Update ProjectRoadMap.md document with progress (All)
-- [ ] Each member must upload at least 2 commit URLs (All)
+- [x] Each member must upload at least 2 commit URLs (All)
 
 ## Sprint #3:
 - [ ] Finish Project & Create Powerpoint (All)
