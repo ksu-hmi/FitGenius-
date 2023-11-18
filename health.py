@@ -82,7 +82,7 @@ def display_gen(df):
     col1, col2 = st.columns([1, 1])
     col1.plotly_chart(fig, use_container_width=True)
 
-    df_agg = df.groupby(['Date'], as_index=False)['Actual Steps'].mean()
+    df_agg = df.groupby(['Stress'], as_index=False)['Actual Steps'].mean()
     col2.write("Steps")
     col2.table(df_agg)
 
