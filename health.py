@@ -126,9 +126,10 @@ def train_decision_tree(df):
 
 # Function to make predictions and display recommendations
 def display_recommendations(dt_model, input_data):
-    input_data = df.iloc[0][['Sleep Duration', 'Heart Rate', 'Stress Level']]
+    # input_data = df.iloc[0][['Sleep Duration', 'Heart Rate', 'Stress Level']]: removed
     # Make predictions based on the input data
-    prediction = dt_model.predict(sample_data)[0]
+    # edited line below to to ensure the input data is properly formatted for prediction and the result is correctly indexed to obtain the prediction value
+    prediction = dt_model.predict(input_data.reshape(1, -1))[0]
 
     # Display recommendations based on the predicted class
     if prediction == 'class1':
