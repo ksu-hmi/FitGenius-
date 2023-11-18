@@ -13,7 +13,8 @@
 ## Sprint #2:
 - [x] Have orignal code run properly
 - [x] Import personal smartwatch data into platform, and create visualizations based on the data
-- [ ] Familiarize with ML / AI to ensure fitness and health reccomendations 
+- [x] Start working towards a decision tree for fitness and health recommendations
+- [ ] Analyze watch data and create visualizations 
 - [ ] Commit at least 6 significant updates, each (All)
 - [x] Update ProjectRoadMap.md document with progress (All)
 - [ ] Each member must upload at least 2 commit URLs (All)
