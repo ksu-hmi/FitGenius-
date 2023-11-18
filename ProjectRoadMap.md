@@ -11,10 +11,13 @@
       https://github.com/alexazria/Predicting_Diseases_Streamlit_ML
 
 ## Sprint #2:
+- [x] Create team in GitHub to import foundational repository
+- [x] Begin reviewing code for errors and commit changes
 - [x] Have orignal code run properly
-- [x] Import personal smartwatch data into platform, and create visualizations based on the data
+- [x] Import personal smartwatch data into platform
+- [ ] Analyze watch data
+- [ ] Create visualizations of data
 - [x] Start working towards a decision tree for fitness and health recommendations
-- [ ] Analyze watch data and create visualizations 
 - [ ] Commit at least 6 significant updates, each (All)
 - [x] Update ProjectRoadMap.md document with progress (All)
 - [ ] Each member must upload at least 2 commit URLs (All)
