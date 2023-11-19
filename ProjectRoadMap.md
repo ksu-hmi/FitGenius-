@@ -21,7 +21,7 @@
 - [x] Start working towards a decision tree for fitness and health recommendations
 - [x] Commit at least 6 significant updates, each (All)
 - [x] Update ProjectRoadMap.md document with progress (All)
-- [x] 
+- [x] Each member must upload at least 2 commit URLs (All)
 
 ## Sprint #3:
 - [ ] Finish Project & Create Powerpoint (All)
