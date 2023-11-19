@@ -227,5 +227,17 @@ def render():
 render()
 
 def regression(df, coll, col2):
+
+def train_decision_tree(df):
+    # Choose features and target variable
+    feature_columns = ['Sleep Duration', 'Heart Rate', 'Stress Level']
+    X = df[feature_columns]
+    y = df['BMI Category']
+
+    # Create and train the Decision Tree model
+    dt_clf = DecisionTreeClassifier()
+    dt_clf.fit(X, y)
+
+    return dt_clf
     
 
