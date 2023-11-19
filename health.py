@@ -226,3 +226,6 @@ def render():
 # Call the render function
 render()
 
+def regression(df, coll, col2):
+    
+
