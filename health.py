@@ -238,6 +238,19 @@ def train_decision_tree(df):
     dt_clf = DecisionTreeClassifier()
     dt_clf.fit(X, y)
 
+
+def render():
+    try:
+        if 'df_health' not in st.session_state:
+            # Load your health dataset (replace 'your_dataset.csv' with the actual file name)
+            df = pd.read_csv('WatchData.csv')  
+            st.session_state['df_health'] = df
+        else:
+            df = st.session_state['df_health']
+    except FileNotFoundError:
+        st.error("File 'WatchData.csv' not found. Please make sure the file exists.")
+        return
+
     return dt_clf
     
 
