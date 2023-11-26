@@ -114,9 +114,9 @@ from sklearn.tree import DecisionTreeClassifier
 # Function to create and train the decision tree model
 def train_decision_tree(df):
     # Choose features and target variable
-    features = ['Sleep Duration', 'Heart Rate', 'Stress Level']  # Adjust based on your feature names
+    features = ['Active Calories', 'Resting Calories', 'Total Calories', 'Actual Steps', 'Stress']  # Adjust based on your feature names
     X = df[features]
-    y = df['BMI Category']
+    y = df['Stress']
 
     # Create and train the Decision Tree model
     dt_clf = DecisionTreeClassifier()
@@ -126,20 +126,36 @@ def train_decision_tree(df):
 
 # Function to make predictions and display recommendations
 def display_recommendations(dt_model, input_data):
-    # input_data = df.iloc[0][['Sleep Duration', 'Heart Rate', 'Stress Level']]: removed
-    # Make predictions based on the input data
-    # edited line below to to ensure the input data is properly formatted for prediction and the result is correctly indexed to obtain the prediction value
-    prediction = dt_model.predict(input_data.reshape(1, -1))[0]
+    features = ['Active Calories', 'Resting Calories', 'Total Calories', 'Actual Steps', 'Stress']
+
+    # Convert input_data to DataFrame before selecting columns
+    input_data_df = pd.DataFrame(input_data).transpose()
+    input_data_df = input_data_df[features]
+
+    prediction = dt_model.predict(np.array(input_data_df).reshape(1, -1))[0]
 
     # Display recommendations based on the predicted class
-    if prediction == 'class1':
-        st.write("Recommendation 1: ...")
-        st.write("Recommendation 2: ...")
-    elif prediction == 'class2':
-        st.write("Recommendation 3: ...")
-        st.write("Recommendation 4: ...")
+    if input_data_df['Stress'].values[0] > 23:
+        # Provide recommendations for high-stress scenarios
+        st.write("Recommendation: Consider incorporating activities like yoga and meditation to manage stress.")
+    elif input_data_df['Stress'].values[0] <= 23:
+        # Provide recommendations for stress levels below or equal to 23
+        if input_data_df['Total Calories'].values[0] > 0:
+            if input_data_df['Total Calories'].values[0] > 1000:
+                st.write("Great job! Your stress levels are low, and you're burning a substantial number of calories.")
+                st.write("Recommendation: Continue with your current fitness routine and consider adding variety.")
+            else:
+                st.write("Your stress levels are low, but you can still benefit from increasing physical activity.")
+                st.write("Recommendation: Add more exercises to your routine, such as brisk walking or cycling.")
+        else:
+            st.write("Low stress level detected, but it seems there's no data for total calories.")
+            st.write("Recommendation: Ensure to track and maintain a balance between physical activity and calories.")
     else:
+        # Default recommendations
         st.write("Default Recommendation: ...")
+
+
+
 
 
 
@@ -216,7 +232,7 @@ def render():
             regression(df, x_axis_select, y_axis_select)
 
     elif options == "Recommendations":
-        sample_data = df.iloc[0][['Stress', 'Total Calories', 'Actual Steps']]
+        sample_data = df[['Active Calories', 'Resting Calories', 'Total Calories', 'Actual Steps', 'Stress']].iloc[0]
         # added brackets to column selection above to correct syntax error
         dt_model = train_decision_tree(df)
         # added above line to train model before predictions
@@ -225,32 +241,3 @@ def render():
 
 # Call the render function
 render()
-
-def regression(df, coll, col2):
-
-def train_decision_tree(df):
-    # Choose features and target variable
-    feature_columns = ['Sleep Duration', 'Heart Rate', 'Stress Level']
-    X = df[feature_columns]
-    y = df['BMI Category']
-
-    # Create and train the Decision Tree model
-    dt_clf = DecisionTreeClassifier()
-    dt_clf.fit(X, y)
-
-
-def render():
-    try:
-        if 'df_health' not in st.session_state:
-            # Load your health dataset (replace 'your_dataset.csv' with the actual file name)
-            df = pd.read_csv('WatchData.csv')  
-            st.session_state['df_health'] = df
-        else:
-            df = st.session_state['df_health']
-    except FileNotFoundError:
-        st.error("File 'WatchData.csv' not found. Please make sure the file exists.")
-        return
-
-    return dt_clf
-    
-

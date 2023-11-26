@@ -43,3 +43,5 @@ dic[app_view]()
 
 options = st.sidebar.multiselect("Chart Type", ["Chart 1", " Chart 2", "Chart 3"])
 st.write(f"You selected: {options}")
+
+
