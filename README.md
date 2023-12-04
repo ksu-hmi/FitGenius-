@@ -1,6 +1,6 @@
 # FitGenius: Personalized Health and Fitness Platform
 ## Introduction 
-In the ever-evolving landscape of health and wellness technology, FitGenius stands out as an innovative platform that seamlessly integrates personalized smart device data with AI and ML capabilities. This project represents a forward-looking approach to health management, offering a comprehensive solution that combines data visualization, disease predictions, and personalized fitness recommendations.
+In the ever-evolving landscape of health and wellness technology, FitGenius stands out as an innovative platform that seamlessly integrates personalized smart device data with AI and ML capabilities. This project represents a forward-looking approach to health management, offering a comprehensive solution that combines data visualization and personalized fitness recommendations.
 
 ## Key Features 
 - **Data Visualization:**
