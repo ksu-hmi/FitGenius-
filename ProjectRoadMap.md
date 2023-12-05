@@ -24,7 +24,7 @@
 - [x] Each member must upload at least 2 commit URLs (All)
 
 ## Sprint #3:
-- [ ] Finish Project & Create Powerpoint (All)
+- [x] Finish Project & Create Powerpoint (All)
 - PowerPoint Criteria:
   - Title
   - Team Members
